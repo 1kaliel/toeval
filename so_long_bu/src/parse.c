@@ -20,10 +20,7 @@ void	parse_tile(t_map *map, char tile, int x, int y)
 		ft_printf(YELLOW INFO_EMOJI " Current player count: %d\n" RESET,
 			map->player_count);
 		if (map->player_count > 1)
-		{
-			free_map(map);
 			error_and_exit("Map must have exactly one player (P).");
-		}
 		map->player_x = x;
 		map->player_y = y;
 	}
@@ -61,7 +58,7 @@ void	read_map_line(t_map *map, char *line, int i)
 	ft_printf(BLUE INFO_EMOJI " Reading line %d: '%s'\n" RESET, i, line);
 	if (i == 0)
 		map->width = ft_strlen(line);
-	//parse_line(map, line, i);
+	parse_line(map, line, i);
 }
 
 void	parse_map(t_map *map, const char *file)
@@ -84,12 +81,6 @@ void	parse_map(t_map *map, const char *file)
 		read_map_line(map, line, i);
 		i++;
 		line = get_next_line(fd);
-	}
-	i = 0;
-	while (i < map->height)
-	{
-		parse_line(map, map->map_data[i], i);
-		i++;
 	}
 	map->map_data[i] = NULL;
 	close(fd);

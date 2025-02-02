@@ -20,10 +20,7 @@ void	check_rectangular(t_map *map)
 	while (map->map_data[i])
 	{
 		if ((int)ft_strlen(map->map_data[i]) != map->width)
-		{
-			free_map(map);
 			error_and_exit("Map is not rectangular.");
-		}
 		i++;
 	}
 }

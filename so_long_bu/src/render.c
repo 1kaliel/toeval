@@ -44,10 +44,7 @@ void	load_textures(t_game *game)
 			COLLECTIBLE_TEXTURE, &game->collectible.width,
 			&game->collectible.height);
 	if (!game->collectible.img_ptr)
-	{
-		close_game(game);		
 		error_and_exit("Failed to load collectible texture.");
-	}
 }
 
 void	render_with_transparency(t_game *game, void *img, int draw_x,
